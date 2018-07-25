@@ -5,15 +5,21 @@
   
 
   
-  <title>王正浩的博客</title>
+  <title>Openstack-nova-scheduler | 王正浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="王正浩的博客">
-<meta property="og:url" content="https://wangzh1993.github.io/index.html">
+  <meta name="description" content="nova scheduler服务是nova中的调度器服务，用于选择一个计算节点运行虚拟机实例。  源码分析与nova其他服务类似，该服务的入口位于对应模块的Manager类中，代码位于nova.scheduler.manager:SchedulerManager，下面以虚拟机启动为例分析。 class SchedulerManager(manager.Manager):     &quot;&quot;&quot;Choos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Openstack-nova-scheduler">
+<meta property="og:url" content="https://wangzh1993.github.io/2018/07/25/Openstack-nova-scheduler/index.html">
 <meta property="og:site_name" content="王正浩的博客">
+<meta property="og:description" content="nova scheduler服务是nova中的调度器服务，用于选择一个计算节点运行虚拟机实例。  源码分析与nova其他服务类似，该服务的入口位于对应模块的Manager类中，代码位于nova.scheduler.manager:SchedulerManager，下面以虚拟机启动为例分析。 class SchedulerManager(manager.Manager):     &quot;&quot;&quot;Choos">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://docs.openstack.org/developer/nova/_images/filteringWorkflow1.png">
+<meta property="og:updated_time" content="2018-07-25T03:55:07.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王正浩的博客">
+<meta name="twitter:title" content="Openstack-nova-scheduler">
+<meta name="twitter:description" content="nova scheduler服务是nova中的调度器服务，用于选择一个计算节点运行虚拟机实例。  源码分析与nova其他服务类似，该服务的入口位于对应模块的Manager类中，代码位于nova.scheduler.manager:SchedulerManager，下面以虚拟机启动为例分析。 class SchedulerManager(manager.Manager):     &quot;&quot;&quot;Choos">
+<meta name="twitter:image" content="https://docs.openstack.org/developer/nova/_images/filteringWorkflow1.png">
   
     <link rel="alternate" href="/atom.xml" title="王正浩的博客" type="application/atom+xml">
   
@@ -60,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Openstack-nova-scheduler" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Openstack-nova-scheduler" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/25/Openstack-nova-scheduler/" class="article-date">
   <time datetime="2018-07-25T03:54:01.000Z" itemprop="datePublished">2018-07-25</time>
@@ -75,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/Openstack-nova-scheduler/">Openstack-nova-scheduler</a>
+    <h1 class="article-title" itemprop="name">
+      Openstack-nova-scheduler
     </h1>
   
 
@@ -257,104 +261,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Linux根分区扩容" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/Linux根分区扩容/" class="article-date">
-  <time datetime="2018-07-25T03:27:02.000Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/Linux根分区扩容/">Linux根分区扩容</a>
-    </h1>
+    <a href="/2018/07/25/Linux根分区扩容/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux根分区扩容</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>本次操作环境为CentOS7，由于之前的操作记录不慎丢失，回显内容都是从网上找的</strong></p>
-<h3 id="1-查看磁盘分区表："><a href="#1-查看磁盘分区表：" class="headerlink" title="1. 查看磁盘分区表："></a>1. 查看磁盘分区表：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@elk ~]# fdisk -l /dev/sda</span><br><span class="line">Disk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0xec3cd762</span><br><span class="line"> </span><br><span class="line">Device     Boot    Start      End  Sectors  Size Id Type</span><br><span class="line">/dev/sda1  *        2048 60817407 60815360   29G 83 Linux</span><br><span class="line">/dev/sda2       60819454 62912511  2093058 1022M  5 Extended</span><br><span class="line">/dev/sda5       60819456 62912511  2093056 1022M 82 Linux swap / Solaris</span><br></pre></td></tr></table></figure>
-<table><tr><td bgcolor="orange">记住上面显示的交换分区大小（Blocks的数目），这里就是2093056。如果交换分区和根目录不在一个磁盘(比如/dev/sdb），就不要记了。在本文，交换分区在/dev/sda，需要重新分区。</td></tr></table>
-
-<h3 id="2-扩展虚拟机磁盘，增加至100G"><a href="#2-扩展虚拟机磁盘，增加至100G" class="headerlink" title="2. 扩展虚拟机磁盘，增加至100G"></a>2. 扩展虚拟机磁盘，增加至100G</h3><h3 id="3-关闭系统swap"><a href="#3-关闭系统swap" class="headerlink" title="3. 关闭系统swap:"></a>3. 关闭系统swap:</h3><p>首先查看系统swap空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@elk ~]# free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line">Mem:           992        924         67          0         43        426</span><br><span class="line">Swap:         1021          0       1021</span><br></pre></td></tr></table></figure></p>
-<p>关闭swap：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@elk ~]# swapoff -a</span><br></pre></td></tr></table></figure>
-<p>重新查看系统swap空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@elk ~]# free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line">Mem:           992        924         67          0         43        426</span><br><span class="line">Swap:            0          0          0</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-删除-dev-sda1、-dev-sda2和-dev-sda5，重新分区"><a href="#4-删除-dev-sda1、-dev-sda2和-dev-sda5，重新分区" class="headerlink" title="4. 删除/dev/sda1、/dev/sda2和/dev/sda5，重新分区"></a>4. 删除/dev/sda1、/dev/sda2和/dev/sda5，重新分区</h3><p><td bgcolor="orange">这里需要记录分区表各个分区的起始位置，swap分区大小保持和之前一致</td><br>重新创建swap分区，只需在正常分区之后转换分区类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): t</span><br><span class="line">Partition number (1-4): 4</span><br><span class="line">Hex code (type L to list codes): 82</span><br><span class="line">Changed system type of partition 2 to 82 (Linux swap / Solaris)</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-重启虚拟机并调整分区大小"><a href="#5-重启虚拟机并调整分区大小" class="headerlink" title="5. 重启虚拟机并调整分区大小"></a>5. 重启虚拟机并调整分区大小</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@elk ~]# resize2fs /dev/sda1</span><br></pre></td></tr></table></figure>
-<h3 id="6-打开swap分区"><a href="#6-打开swap分区" class="headerlink" title="6. 打开swap分区"></a>6. 打开swap分区</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@elk ~]# mkswap /dev/sda4</span><br><span class="line">[root@elk ~]# swapon -a</span><br></pre></td></tr></table></figure>
-<p>最后根据blkid修改/etc/fstab 中swap分区的UUID。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://wangzh1993.github.io/2018/07/25/Linux根分区扩容/" data-id="cjk0ljb6m00013gs47ka1uohh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/hello-world/" class="article-date">
-  <time datetime="2018-07-25T03:12:31.867Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://wangzh1993.github.io/2018/07/25/hello-world/" data-id="cjk0ljb6p00023gs4gu2e5qki" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
