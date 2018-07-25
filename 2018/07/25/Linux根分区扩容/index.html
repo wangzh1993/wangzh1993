@@ -5,15 +5,19 @@
   
 
   
-  <title>王正浩的博客</title>
+  <title>Linux根分区扩容 | 王正浩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="王正浩的博客">
-<meta property="og:url" content="https://wangzh1993.github.io/index.html">
+  <meta name="description" content="本次操作环境为CentOS7，由于之前的操作记录不慎丢失，回显内容都是从网上找的 1. 查看磁盘分区表：123456789101112[root@elk ~]# fdisk -l /dev/sdaDisk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectorsUnits: sectors of 1 * 512 = 512 bytesSector">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux根分区扩容">
+<meta property="og:url" content="https://wangzh1993.github.io/2018/07/25/Linux根分区扩容/index.html">
 <meta property="og:site_name" content="王正浩的博客">
+<meta property="og:description" content="本次操作环境为CentOS7，由于之前的操作记录不慎丢失，回显内容都是从网上找的 1. 查看磁盘分区表：123456789101112[root@elk ~]# fdisk -l /dev/sdaDisk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectorsUnits: sectors of 1 * 512 = 512 bytesSector">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-25T03:27:39.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王正浩的博客">
+<meta name="twitter:title" content="Linux根分区扩容">
+<meta name="twitter:description" content="本次操作环境为CentOS7，由于之前的操作记录不慎丢失，回显内容都是从网上找的 1. 查看磁盘分区表：123456789101112[root@elk ~]# fdisk -l /dev/sdaDisk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectorsUnits: sectors of 1 * 512 = 512 bytesSector">
   
     <link rel="alternate" href="/atom.xml" title="王正浩的博客" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Linux根分区扩容" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Linux根分区扩容" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/25/Linux根分区扩容/" class="article-date">
   <time datetime="2018-07-25T03:27:02.000Z" itemprop="datePublished">2018-07-25</time>
@@ -75,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/Linux根分区扩容/">Linux根分区扩容</a>
+    <h1 class="article-title" itemprop="name">
+      Linux根分区扩容
     </h1>
   
 
@@ -106,56 +108,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/hello-world/" class="article-date">
-  <time datetime="2018-07-25T03:12:31.867Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2018/07/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://wangzh1993.github.io/2018/07/25/hello-world/" data-id="cjk0kltdj0000b8s45zoiqara" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
